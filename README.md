@@ -74,33 +74,31 @@ El código consta de:
 
 ### Código:
 ```cpp
-volatile int interruptCounter = 0;
-int totalInterruptCounter = 0;
-hw_timer_t *timer = NULL;
+volatile int interruptCounter;
+int totalInterruptCounter;
+hw_timer_t * timer = NULL;
 portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
-
 void IRAM_ATTR onTimer() {
-    portENTER_CRITICAL_ISR(&timerMux);
-    interruptCounter++;
-    portEXIT_CRITICAL_ISR(&timerMux);
+portENTER_CRITICAL_ISR(&timerMux);
+interruptCounter++;
+portEXIT_CRITICAL_ISR(&timerMux);
 }
-
 void setup() {
-    Serial.begin(115200);
-    timer = timerBegin(0, 80, true);
-    timerAttachInterrupt(timer, &onTimer, true);
-    timerAlarmWrite(timer, 1000000, true);
-    timerAlarmEnable(timer);
+Serial.begin(115200);
+timer = timerBegin(0, 80, true);
+timerAttachInterrupt(timer, &onTimer, true);
+timerAlarmWrite(timer, 1000000, true);
+timerAlarmEnable(timer);
 }
-
 void loop() {
-    if (interruptCounter > 0) {
-        portENTER_CRITICAL(&timerMux);
-        interruptCounter--;
-        portEXIT_CRITICAL(&timerMux);
-        totalInterruptCounter++;
-        Serial.printf("Se ha producido una interrupción. Total: %d\n", totalInterruptCounter);
-    }
+if (interruptCounter > 0) {
+portENTER_CRITICAL(&timerMux);
+interruptCounter--;
+portEXIT_CRITICAL(&timerMux);
+totalInterruptCounter++;
+Serial.print("An interrupt as occurred. Total number: ");
+Serial.println(totalInterruptCounter);
+}
 }
 ```
 
