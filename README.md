@@ -102,8 +102,11 @@ Serial.println(totalInterruptCounter);
 }
 ```
 
-### Funcionamiento y Salidas
-En esta parte, se genera una interrupción cada **1 segundo** utilizando un temporizador (timer). Cada vez que se activa la interrupción, el contador global se incrementa y se muestra el número total de interrupciones en el puerto serie.
+### Funcionamiento
+Se configura un temporizador para generar interrupciones cada 1 segundo (1.000.000 microsegundos).
+Cada vez que se activa una interrupción, el valor de interruptCounter se incrementa.
+En el bucle principal (loop()), si se detecta que ha ocurrido una interrupción (interruptCounter es mayor que 0), el contador se reduce y se añade al total de interrupciones registradas (totalInterruptCounter).
+Finalmente, el número total de interrupciones se imprime en el monitor serie.
 
 #### Salida esperada en el puerto serie:
 ```
