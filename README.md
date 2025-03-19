@@ -45,8 +45,10 @@ Serial.println("Interrupt Detached!");
 }
 ```
 
-### Funcionamiento y Salidas
-El código configura una interrupción en el **Pin 18** del ESP32. Cada vez que se detecta un flanco de bajada (cuando se conecta a GND), se incrementa un contador y se imprime el número total de pulsaciones en el puerto serie. Si pasa 1 minuto sin interrupciones, se desactiva la interrupción.
+### Funcionamiento
+Cuando se presiona el botón, se activa una interrupción que ejecuta la función isr(), la cual incrementa el contador de pulsaciones y marca el botón como presionado.
+En el bucle principal (loop()), el código verifica si el botón ha sido pulsado y muestra en el monitor serie la cantidad de veces que ha ocurrido.
+Si transcurre un minuto sin nuevas interrupciones, la función se deshabilita automáticamente.
 
 #### Salida esperada en el puerto serie:
 ```
