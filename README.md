@@ -222,4 +222,7 @@ void loop() {
 
 
 ```
+Lo que nos pide en este apartado extra es que con un nuevo código podamos alterar la frecuencia de parpadeo de un led utilizando 2 pulsadores. Por tanto el led parpadeara con la frecuencia inicial e irá teniendo interrupciones por timer, y luego cuando pulses un botón la frecuencia de parpadeo aumentará y si pulsas el contrario disminuye. También el código actúa como filtraje de pulsadores para evitar rebotes usando la función checkButtons(). En nuestro caso el botón que aumenta la frecuencia es el del GPIO18 y el que disminuye la frecuencia es el del GPIO17, y el led está situado en el GPIO4. Por tanto nuestro led empieza a parpadear a 1Hz (500ms) de frecuencia inicial y sale por pantalla su respectivo mensaje de que se ha iniciado el sistema. Por tanto como hemos indicado anteriormente cuando pulsamos el botón del GPIO18 disminuye de 50 en 50 el tiempo entre parpadeos causando que la frecuencia sea mayor con un mínimo de 100ms, y cuando se presione el GPIO17 habrá la misma proporción de disminución que de aumento en el GPIO18 solo que en el caso de la bajada el parpadeo tendrá el limite en 2000ms.
+
+
 
