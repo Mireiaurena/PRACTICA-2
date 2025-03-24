@@ -128,7 +128,7 @@ Esta práctica muestra cómo se pueden manejar interrupciones en el ESP32 median
 2. **Interrupción por Timer**: Se activa automáticamente cada segundo.
 
 Ambos métodos permiten ejecutar código de forma asíncrona, sin depender del `loop()`, lo que es esencial en aplicaciones de tiempo real y sistemas embebidos.
-## **Apartados Extras:**
+### **Ejercicio de mejora:**
 
 **Codigo main.cpp:**
 
