@@ -132,7 +132,7 @@ Ambos métodos permiten ejecutar código de forma asíncrona, sin depender del `
 
 **Codigo main.cpp:**
 
-```
+```cpp
 #include <Arduino.h>
 const int LED_PIN = 4;       // LED en GPIO4
 const int BTN_UP = 18;       // Botón para aumentar la frecuencia
